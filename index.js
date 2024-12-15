@@ -8,7 +8,11 @@ const app = express();
 dotenv.config();
 
 const PORT = process.env.PORT || 8000;
-app.use(cors());
+app.use(cors(({
+    origin: 'https://gmail-cl.netlify.app', // Replace with your Netlify URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    credentials: true // If you are using cookies or HTTP authentication
+})));
 app.use(express.urlencoded());
 app.use(express.json());
 app.use('/', routes);
